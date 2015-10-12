@@ -80,7 +80,7 @@ class MyEnumerator
     value = nil
 
     if enum.equal?(self)
-      loop { block.call(self.next) } if block
+      loop { feed(block.call(self.next)) } if block
     else
       value = enum.each(&block) if block
     end

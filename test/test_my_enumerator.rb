@@ -76,7 +76,7 @@ class TestMyEnumerator < Minitest::Test
     enum = obj.my_enum_for(:map)
     block = -> elem { "<#{elem.inspect}>" }
 
-    #assert_equal obj.map(&block), enum.each {}
+    assert_equal obj.map(&block), enum.each(&block)
   end
 
   def test_next_values_enclose_arguments_as_array_except_if_multiple
