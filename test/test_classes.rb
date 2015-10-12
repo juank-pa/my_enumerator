@@ -11,30 +11,22 @@ class LinkedList
     @tail = list
   end
 
+  def insert(value)
+    LinkedList.new(value, self)
+  end
+
   def each
-    if block_given?
-      list = self
-      while list
-        yield list.value
-        list = list.tail
-      end
-    else
-      nil
+    list = self
+    while list
+      yield list.value
+      list = list.tail
     end
+    self
   end
-end
 
-class EnumerableClass
-  include Enumerable
-  def each
-    yield 1
-    yield 2
-    yield 'hola'
-    8
+  def inspect
+    "#{@value.inspect} -> #{@tail.inspect}"
   end
-end
 
-class MyEnumerableClass < EnumerableClass
-  include MyEnumerable
+  alias to_s inspect
 end
-
