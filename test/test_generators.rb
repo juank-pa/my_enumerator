@@ -80,17 +80,17 @@ class TestGenerators < Minitest::Test
   def test_calling_iterators_without_arguments_return_enumerators
     enum = @fib.each_with_index
     assert_instance_of MyEnumerator, enum
-    refute_equal enum, @fib
+    refute_same enum, @fib
 
     enum = @fib.each_with_object(Object.new)
     assert_instance_of MyEnumerator, enum
-    refute_equal enum, @fib
+    refute_same enum, @fib
 
     enum = @fib.each
     assert_instance_of MyEnumerator, enum
-    assert_equal enum, @fib
+    assert_same enum, @fib
     enum = @fib.each(1, 2, 3)
-    refute_equal enum, @fib
+    refute_same enum, @fib
   end
 
   def test_yield_operator

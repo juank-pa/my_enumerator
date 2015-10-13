@@ -15,6 +15,11 @@ class LinkedList
     LinkedList.new(value, self)
   end
 
+  def size
+    return 1 if tail.nil?
+    1 + tail.size
+  end
+
   def each
     list = self
     while list
